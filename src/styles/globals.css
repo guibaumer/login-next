@@ -1,0 +1,42 @@
+:root {
+  /* COLORS */
+  --black-color: #000;
+  --white-color: #fff;
+  --darkest-purple: #3c2a4d;
+  --dark-purple: #503a65;
+  --purple: #574f7d;
+  --blue: #95adbe;
+  --light-blue: #e0f0ea;
+  /* FONTS SIZES */
+  --smallest-font-size: 1rem;
+  --normal-font-size: 1.125rem;
+  --input-font-size: 1.250rem;
+  --medium-font-size: 1.5rem;
+  --big-font-size: 1.75rem;
+  --bigger-font-size: 2rem;
+  --extra-font-size: 2.250rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  font-size: var(--normal-font-size);
+}
+
+h2 {
+  font-size: var(--bigger-font-size);
+  text-align: center;
+  margin: 20px;
+}
+
+input[type=submit]:hover {
+  cursor: pointer;
+}
