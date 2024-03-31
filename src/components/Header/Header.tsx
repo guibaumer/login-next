@@ -1,10 +1,58 @@
+'use client'
+
+import Link from 'next/link';
 import styles from './styles.module.css';
-import { SITE_NAME } from '@/config/app-config';
+import { API_URL, SITE_NAME } from '@/config/app-config';
+import LogoutButton from '../LogoutButton/LogoutButton';
+import { useAuth } from '@/contexts/AuthContext';
+import { useEffect, useState } from 'react';
 
 export default function Header() {
+  const [loading, setLoading] = useState(true);
+  const { setName, login, isLoggedIn } = useAuth();
+
+  async function findSession() {
+    const response = await fetch(`${API_URL}/user/session`, {
+      credentials: 'include',
+    });
+
+    if (!response.ok) {
+      return setLoading(false); 
+    } else {
+      const user = await response.json();
+  
+      setName(user.username);
+      login();
+  
+      setLoading(false);
+    }   
+  }
+
+  useEffect(() => {
+    if (isLoggedIn) {
+        setLoading(false);
+    } else {
+        findSession();
+    }
+  }, []);
+
   return (
     <header className={styles.header}>
+      <Link href='/'>
       <h1 className={styles.h1}>{SITE_NAME}</h1>
+      </Link>
+
+      <div className={styles.header_div}>
+        {!loading && isLoggedIn && <LogoutButton />}
+        {!loading && !isLoggedIn && (
+          <>
+          <Link className={styles.link} href="/register">Cadastrar</Link>
+          <Link className={styles.link} href="/login">Logar</Link>
+          </>
+        )}
+        <Link className={styles.link} href="/something">Something</Link>
+      </div>
+
     </header>
   );
 }

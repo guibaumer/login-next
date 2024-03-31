@@ -10,3 +10,20 @@
     font-size: var(--extra-font-size);
     color: var(--light-blue);
 }
+
+.header_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.link {
+    font-size: var(--normal-font-size);
+    color: var(--white-color);
+    margin: 0px 3px;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
