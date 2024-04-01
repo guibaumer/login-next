@@ -1,13 +1,14 @@
 'use client';
 
 import 'react-toastify/dist/ReactToastify.css';
+import styles from './styles.module.css';
 import { FormEvent, useState } from 'react';
 import { toast } from 'react-toastify';
-import styles from './styles.module.css';
 import { ClipLoader } from 'react-spinners';
 import { API_URL } from '@/config/app-config';
 import { useAuth } from '@/contexts/AuthContext';
 import validator from 'validator';
+import { useRouter } from 'next/navigation';
 
 type FormData = {
     name: string;
@@ -23,6 +24,7 @@ export default function Form() {
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const { login } = useAuth();
+    const router = useRouter();
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -55,6 +57,7 @@ export default function Form() {
                         resMessages = await response.text();
                         login();
                         toast.success(resMessages);
+                        router.push('/');
                     }
 
                 } catch(err) {
