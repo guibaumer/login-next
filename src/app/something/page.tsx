@@ -11,8 +11,12 @@ async function check() {
     return data;
 }
 
+export type SecuredData = {
+    message: string;
+}
+
 export default function Page() {
-    const [data, setData] = useState(null);
+    const [data, setData] = useState<SecuredData | null>(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -26,10 +30,8 @@ export default function Page() {
 
     return (
         <>
-        <h1>Oi</h1>
+        <h1>PRIVATE ROUTE</h1>
         {data && data.message && data.message}
-        {data && data.user && data.user.username && data.user.username}
-
         <Link href={'/'}>HOME</Link>
         </>
     )
