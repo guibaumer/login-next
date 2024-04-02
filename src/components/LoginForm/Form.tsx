@@ -46,7 +46,7 @@ export default function Form() {
                     } else {
                         login();
                         toast.success(resText);
-                        router.push('/');
+                        // router.push('/');
                     }
 
                 } catch (err) {
