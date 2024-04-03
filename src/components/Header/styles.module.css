@@ -27,3 +27,17 @@
 .link:hover {
     text-decoration: underline;
 }
+
+.svg {
+    width: 40px;
+}
+
+
+@media screen and (max-width: 400px) {
+    .h1 {
+        font-size: var(--big-font-size);
+    } 
+    .header {
+        padding: 12px;
+    }
+}

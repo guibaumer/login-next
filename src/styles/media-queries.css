@@ -1,0 +1,17 @@
+@media all and (max-width: 400px) {
+
+    /*
+    JUST TO REMEMBER: 
+        ELEMENTS STYLED WITH CSS MODULES MAY HAVE THEIR MEDIA QUERIES IN
+        THEIR styles.module.css FILE, AND NOT HERE. 
+    */
+
+    h2 {
+        font-size: var(--medium-font-size);
+    }
+
+    p {
+        font-size: var(--smallest-font-size);
+    }
+    
+}

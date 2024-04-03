@@ -3,6 +3,7 @@
 import { API_URL } from "@/config/app-config";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import styles from './styles.module.css';
 
 async function check() {
     const response = await fetch(`${API_URL}/user/secured-data`, { credentials: 'include' });
@@ -26,13 +27,13 @@ export default function Page() {
         fetchData();
     }, []);
 
-    console.log(data);
-
     return (
-        <>
-        <h1>PRIVATE ROUTE</h1>
-        {data && data.message && data.message}
-        <Link href={'/'}>HOME</Link>
-        </>
+        <div className={styles.container}>
+            <div className={styles.private_div}>
+                <h2 className={styles.h2}>PRIVATE ROUTE</h2>
+                <p className={styles.p}>{data && data.message && data.message}</p>
+                <Link className={styles.link} href={'/'}>HOME</Link>
+            </div>
+        </div>
     )
 }
