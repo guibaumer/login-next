@@ -54,13 +54,14 @@ input[type=submit]:hover {
   background-color: #000000;
   top: 0;
   right: 0;
-  /* width: 100vw; */
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   border-radius: 0px 0px 0px 20px;
-  padding: 10px 10px 10px 30px;
-
+  padding: 20px 10px 20px 40px;
+  width: 90%;
+  max-width: 200px;
 }
+
 

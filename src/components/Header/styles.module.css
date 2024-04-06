@@ -22,6 +22,7 @@
     font-size: var(--normal-font-size);
     color: var(--white-color);
     margin: 0px 3px;
+    padding: 2px;
 }
 
 .link:hover {
@@ -30,6 +31,14 @@
 
 .svg {
     width: 40px;
+}
+
+.close_icon {
+    color: white;
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    width: 32px;
 }
 
 

@@ -19,19 +19,13 @@ export default function Header() {
       findSession();
     }
 
-    // handleResize();
-
     window.addEventListener('resize', handleResize);
 
     handleResize();
 
-    // Return the cleanup function
     return () => {
-      // Remove the event listener
       window.removeEventListener('resize', handleResize);
     };
-
-
   }, []);
 
   async function findSession() {
@@ -51,9 +45,6 @@ export default function Header() {
     }
   }
 
-
-
-  ///////////////////////////////////////////////
   const [isClosed, setIsClosed] = useState(true);
   const [windowWidth, setWindowWidth] = useState<null | number>(null);
 
@@ -63,18 +54,11 @@ export default function Header() {
 
   const handleClick = () => {
     setIsClosed(!isClosed);
-    console.log(document.querySelector('.header_div_hidden'))
   }
 
   useEffect(() => {
     if (windowWidth && windowWidth > 550) setIsClosed(true);
   }, [windowWidth]);
-
-  // window.addEventListener('resize', handleResize);
-
-
-
-
 
   return (
     <header className={styles.header}>
@@ -92,36 +76,21 @@ export default function Header() {
       }
 
       {
-        // (isClosed && windowWidth && windowWidth > 550) && (
         (isClosed && windowWidth && windowWidth > 550 || !isClosed && windowWidth && windowWidth < 550) && (
           <div className={`${styles.header_div} ${!isClosed ? 'open' : ''}`}>
-            {!loading && isLoggedIn && <LogoutButton />}
-            {!loading && !isLoggedIn && (
-              <>
-                <Link className={styles.link} href="/register">Cadastrar</Link>
-                <Link className={styles.link} href="/login">Logar</Link>
-              </>
-            )}
-
-            <PulseLoader loading={loading} size={10} color='#fff' />
-            <Link className={styles.link} href="/something">Something</Link>
+              {!isClosed && <img onClick={handleClick} className={styles.close_icon} src='delete.png' alt='Ícone de fechar menu'/>}
+              {!loading && isLoggedIn && <LogoutButton />}
+              {!loading && !isLoggedIn && (
+                <>
+                  <Link className={styles.link} href="/register">Cadastrar</Link>
+                  <Link className={styles.link} href="/login">Logar</Link>
+                </>
+              )}
+              <PulseLoader loading={loading} size={10} color='#fff' />
+              <Link className={styles.link} href="/something">Something</Link>
           </div>
         )
       }
-
-
-      {/* <div className={styles.header_div}>
-        {!loading && isLoggedIn && <LogoutButton />}
-        {!loading && !isLoggedIn && (
-          <>
-          <Link className={styles.link} href="/register">Cadastrar</Link>
-          <Link className={styles.link} href="/login">Logar</Link>
-          </>
-        )}
-
-        <PulseLoader loading={loading} size={10} color='#fff' />
-        <Link className={styles.link} href="/something">Something</Link>
-      </div> */}
 
     </header>
   );
