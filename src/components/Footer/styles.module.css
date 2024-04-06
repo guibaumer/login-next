@@ -1,0 +1,19 @@
+.credits {
+    text-align: center;
+    font-size: var(--smallest-font-size);
+    font-style: italic;
+    /* color: var(--darkest-purple); */
+    color:#808080;
+    /* text-decoration: underline; */
+}
+
+.footer {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.a {
+    color: #808080;
+    text-decoration: underline;
+}

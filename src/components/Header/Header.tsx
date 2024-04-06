@@ -87,7 +87,7 @@ export default function Header() {
                 </>
               )}
               <PulseLoader loading={loading} size={10} color='#fff' />
-              <Link className={styles.link} href="/something">Something</Link>
+              <Link className={styles.link} href="/something">Verificar</Link>
           </div>
         )
       }

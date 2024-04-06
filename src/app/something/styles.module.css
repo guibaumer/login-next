@@ -3,10 +3,10 @@
     gap: 10px;
     flex-direction: column;
     border: 2px solid #3f3f3f86;
-    max-width: 380px;
+    max-width: 350px;
+    width: 90%;
     border-radius: 5px;
     padding: 5px;
-    /* margin: 40px auto; */
 }
 
 .container {

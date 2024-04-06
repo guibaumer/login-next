@@ -1,7 +1,7 @@
 'use client'
 
 import Header from '@/components/Header/Header';
-
+import Footer from '@/components/Footer/Footer';
 import styles from './styles.module.css';
 
 export default function HomePage() {
@@ -16,6 +16,7 @@ export default function HomePage() {
           Se trata de um sistema de login que usa sessions para a autenticação.
         </div>
       </div>
+      <Footer />
     </>
   );
 }
