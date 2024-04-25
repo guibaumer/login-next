@@ -23,6 +23,7 @@
     color: var(--white-color);
     margin: 0px 3px;
     padding: 2px;
+    display: flex;
 }
 
 .link:hover {
@@ -39,6 +40,10 @@
     left: 3px;
     top: 3px;
     width: 32px;
+}
+
+.gear:active {
+    color: #ccc;
 }
 
 

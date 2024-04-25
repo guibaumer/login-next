@@ -7,7 +7,6 @@ import { toast } from 'react-toastify';
 import { ClipLoader } from 'react-spinners';
 import { API_URL } from '@/config/app-config';
 import { useAuth } from '@/contexts/AuthContext';
-import validator from 'validator';
 import { useRouter } from 'next/navigation';
 
 type FormData = {
@@ -21,7 +20,7 @@ export default function Form() {
     const [lastname, setLastname] = useState('');
     const [email, setEmail] = useState('');
     const [loading, setLoading] = useState(false);
-    const { login, id, setUsername } = useAuth();
+    const { id, setUsername } = useAuth();
     const router = useRouter();
 
     useEffect(() => {
@@ -103,6 +102,8 @@ export default function Form() {
             return true;
         }
     }
+
+    if (loading && !name) return <div className={styles.loading_div}> <ClipLoader className={styles.loading} size={25} /> </div>
 
     return (
         <>

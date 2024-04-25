@@ -7,6 +7,7 @@ import LogoutButton from '../LogoutButton/LogoutButton';
 import { useAuth } from '@/contexts/AuthContext';
 import { useEffect, useState } from 'react';
 import PulseLoader from 'react-spinners/PulseLoader';
+import { FaGear } from "react-icons/fa6";
 
 export default function Header() {
   const [loading, setLoading] = useState(true);
@@ -83,7 +84,9 @@ export default function Header() {
               {!loading && isLoggedIn && (
                 <>
                   <LogoutButton />
-                  <Link className={styles.link} href='/edit'>Config</Link>
+                  <Link className={styles.link} prefetch={false} href='/edit'>
+                    <FaGear className={styles.gear} size={26} />
+                  </Link>
                 </>
               )}
               {!loading && !isLoggedIn && (
@@ -93,7 +96,7 @@ export default function Header() {
                 </>
               )}
               <PulseLoader loading={loading} size={10} color='#fff' />
-              <Link className={styles.link} href="/something">Verificar</Link>
+              <Link className={styles.link} prefetch={false} href="/something">Verificar</Link>
           </div>
         )
       }
