@@ -3,7 +3,7 @@
 // import 'react-toastify/dist/ReactToastify.css';
 import { FormEvent, useState } from 'react';
 import { toast } from 'react-toastify';
-import styles from './styles.module.css';
+import styles from '../../styles/form-styles.module.css';
 import validator from 'validator';
 import { API_URL } from '@/config/app-config';
 import { useAuth } from '@/contexts/AuthContext';
@@ -19,7 +19,7 @@ export default function Form() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
-    const { login } = useAuth();
+    const { login, setUserId, setUsername } = useAuth();
     const router = useRouter();
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -38,15 +38,17 @@ export default function Form() {
                         credentials: 'include',
                     });
 
-                    const resText = await response.text();
+                    const { message, user } = await response.json();
 
                     if (!response.ok) {
-                        toast.error(resText);
+                        toast.error(message);
                         setPassword('');
                     } else {
                         login();
-                        toast.success(resText);
-                        // router.push('/');
+                        setUserId(user.user_id)
+                        setUsername(user.username);
+                        toast.success(message);
+                        router.push('/');
                     }
 
                 } catch (err) {

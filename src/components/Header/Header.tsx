@@ -10,7 +10,7 @@ import PulseLoader from 'react-spinners/PulseLoader';
 
 export default function Header() {
   const [loading, setLoading] = useState(true);
-  const { setName, login, isLoggedIn } = useAuth();
+  const { setUsername, login, isLoggedIn, setUserId } = useAuth();
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -38,7 +38,8 @@ export default function Header() {
     } else {
       const user = await response.json();
 
-      setName(user.username);
+      setUsername(user.username);
+      setUserId(user.user_id)
       login();
 
       setLoading(false);
@@ -79,7 +80,12 @@ export default function Header() {
         (isClosed && windowWidth && windowWidth > 550 || !isClosed && windowWidth && windowWidth < 550) && (
           <div className={`${styles.header_div} ${!isClosed ? 'open' : ''}`}>
               {!isClosed && <img onClick={handleClick} className={styles.close_icon} src='delete.png' alt='Ícone de fechar menu'/>}
-              {!loading && isLoggedIn && <LogoutButton />}
+              {!loading && isLoggedIn && (
+                <>
+                  <LogoutButton />
+                  <Link className={styles.link} href='/edit'>Config</Link>
+                </>
+              )}
               {!loading && !isLoggedIn && (
                 <>
                   <Link className={styles.link} href="/register">Cadastrar</Link>

@@ -7,7 +7,9 @@ interface AuthContextType {
     logout: () => void;
     isLoggedIn: boolean;
     username: string;
-    setName: (name: string) => void;
+    setUsername: (name: string) => void;
+    id: string;
+    setUserId: (id: string) => void;
 }
 
 interface AuthProviderProps {
@@ -19,19 +21,27 @@ const AuthContext = createContext<AuthContextType>({
     logout: () => {},
     isLoggedIn: false,
     username: '',
-    setName: (name: string) => {}
+    setUsername: (name: string) => {},
+    id: '',
+    setUserId: (id: string) => {}
 });
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
-    const [username, setUsername] = useState<string>('');
+    const [username, setName] = useState<string>('');
+    const [id, setId] = useState<string>('');
 
     const login = () => setIsLoggedIn(true);
-    const logout = () => setIsLoggedIn(false);
-    const setName = (name: string) => setUsername(name);
+    const logout = () => {
+        setIsLoggedIn(false);
+        setId('');
+        setUsername('');
+    }
+    const setUsername = (name: string) => setName(name);
+    const setUserId = (id: string) => setId(id);
 
     return (
-        <AuthContext.Provider value={{isLoggedIn, login, logout, setName, username}}>
+        <AuthContext.Provider value={{isLoggedIn, login, logout, setUsername, username, setUserId, id}}>
             {children}
         </AuthContext.Provider>
     )
